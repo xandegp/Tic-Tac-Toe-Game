@@ -41,16 +41,18 @@ int main(){
                 player_move(i,line,column,board);
     //print the new board with the choices of the players
                 print_board(board);
-                if(winner(board)!=0) break;
+
+
+                win = winner(board);
+                if(win!=0) break;
             }
-        win = winner(board);
 
         }while(win==0);
         
-        if(winner(board)==1){
+        if(win==1){
             printf("Player 1 wins!!\n");
         }
-        else if(winner(board)==2){
+        else if(win==2){
             printf("Player 2 wins!!\n");
         }
         else{
