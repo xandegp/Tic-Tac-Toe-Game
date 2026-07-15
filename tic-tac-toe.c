@@ -32,30 +32,27 @@ int main(){
             for(int i=1;i<=2;i++){
                 printf("Player %d, choose the position where to place a mark(line,column)\n",i);
                 scanf("%d %d",&line,&column);
-    //if the player select a position that isn't in the board, he will select again a position
-                while(line>2||column>2){
-                    printf("Error:Please enter valid a position in the matrix (between 0-2)\n");
-                    scanf("%d %d",&line,&column);
-                }
-    //if the player select a position that has been already selected, he will select again a position
-                while(board[line][column]!=' '){
-                    printf("Error:Please enter a position that hasn't been marked\n");
+    //if the player select a position that isn't in the board or a marked one, he will select again a position
+                while(line<0||line>2||column<0||column>2||board[line][column]!=' '){
+                    printf("Error:Please enter valid and unmarked position in the matrix (between 0-2):\n");
                     scanf("%d %d",&line,&column);
                 }                
     //put the mark of the player (X or O) in the selected position
                 player_move(i,line,column,board);
     //print the new board with the choices of the players
                 print_board(board);
-                if(winner(board)!=0) break;
+
+
+                win = winner(board);
+                if(win!=0) break;
             }
-        win = winner(board);
 
         }while(win==0);
         
-        if(winner(board)==1){
+        if(win==1){
             printf("Player 1 wins!!\n");
         }
-        else if(winner(board)==2){
+        else if(win==2){
             printf("Player 2 wins!!\n");
         }
         else{
