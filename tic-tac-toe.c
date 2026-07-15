@@ -32,7 +32,7 @@ int main(){
             for(int i=1;i<=2;i++){
                 printf("Player %d, choose the position where to place a mark(line,column)\n",i);
                 scanf("%d %d",&line,&column);
-    //if the player select a position that isn't in the board, he will select again a position
+    //if the player select a position that isn't in the board or a marked one, he will select again a position
                 while(line<0||line>2||column<0||column>2||board[line][column]!=' '){
                     printf("Error:Please enter valid and unmarked position in the matrix (between 0-2):\n");
                     scanf("%d %d",&line,&column);
